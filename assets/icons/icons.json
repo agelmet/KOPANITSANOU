@@ -1,0 +1,16 @@
+{
+ "source": {
+  "kind": "file",
+  "ref": "assets/img/akrivi-kopanitsanou-logo-icon.svg"
+ },
+ "source_md5": "9389cb21fdbcdbfee973a9391d844ed5",
+ "version": "d1bc4d5e",
+ "tile": null,
+ "crop": null,
+ "header": [
+  "inline",
+  "index.html",
+  "2927a4d3f94b96266c62b7173890644a"
+ ],
+ "made": "2026-11-15"
+}
