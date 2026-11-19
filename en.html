@@ -18,6 +18,7 @@
 <!-- advon-en -->
 <script>try{localStorage.setItem("kop-lang","en")}catch(e){}</script>
 <!-- /advon-en -->
+<meta name="msvalidate.01" content="B111344056B4F7484DEA53457F44A3C3">
 <script id="advon-draft-guard">/* Advon: drafts stay out of Google; the real domain is untouched */(function(h){if(/(^|\.)(drafts\.advonmedia\.com|github\.io|netlify\.app)$/.test(h)){var m=document.createElement("meta");m.name="robots";m.content="noindex,nofollow";document.head.appendChild(m)}})(location.hostname)</script>
 <meta name="theme-color" content="#F7F3EC">
 <meta name="color-scheme" content="light only">
@@ -531,6 +532,48 @@ html:not(.js) .wi,html:not(.js) .h-up,html:not(.js) .hp-img img,html:not(.js) .h
 @keyframes advon-up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.advon-ck{animation:none}}
 </style>
+<style id="r1-css">
+/* ===== r1 (19 Nov 2026): split hero on desktop + space photos as backgrounds ===== */
+@media (min-width:1001px){
+ .hero{padding:0;align-items:stretch;min-height:100vh;min-height:100svh}
+ .hero-in{width:100%;max-width:none;margin:0;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;align-items:stretch;min-height:100vh;min-height:100svh}
+ .hero-txt{align-self:center;padding:calc(var(--hdh) + 40px) clamp(40px,4.6vw,88px) 90px max(24px,calc((100vw - 1300px)/2))}
+ .hero-ph{justify-self:stretch;width:auto;margin:var(--hdh) 0 0;position:relative;min-height:0}
+ .hp-img{aspect-ratio:auto;height:100%;border-radius:220px 0 0 0;box-shadow:none}
+ .hp-img img{object-position:50% 24%}
+ .hp-img::after{background:linear-gradient(90deg,rgba(13,37,29,.16),transparent 22%),linear-gradient(180deg,transparent 62%,rgba(13,37,29,.26))}
+ .hp-frame{inset:-14px auto 24px -14px;width:calc(100% + 14px);border-radius:234px 0 0 0;border-right:0}
+ .hp-plaque{left:-38px;bottom:64px}
+ .hero-line{width:50%}
+ .hero .cue{left:25%}
+}
+/* full-width photo band */
+.pband{position:relative;z-index:1;height:clamp(460px,82vh,780px);overflow:hidden;background:var(--em-dd);color:var(--ivory);display:flex;align-items:flex-end}
+.pband .pb-img{position:absolute;left:0;top:-12%;width:100%;height:124%;object-fit:cover;object-position:50% 50%;transform:translate3d(0,var(--py,0px),0) scale(1.04)}
+.pband::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(13,37,29,0) 25%,rgba(13,37,29,.55) 70%,rgba(13,37,29,.82)),linear-gradient(90deg,rgba(13,37,29,.82) 0%,rgba(13,37,29,.55) 38%,transparent 66%)}
+.pband .pb-in{position:relative;z-index:2;width:min(1240px,100% - 48px);margin:0 auto;padding:0 0 calc(56px + clamp(70px,8vw,120px))}
+.pb-k{display:inline-flex;align-items:center;gap:12px;font:600 11px/1 var(--fb);letter-spacing:.22em;text-transform:uppercase;color:var(--gold-l);margin:0 0 18px}
+.pb-k::before{content:"";width:34px;height:1px;background:currentColor}
+.pb-t{font:300 italic clamp(30px,3.6vw,54px)/1.16 var(--fi);max-width:13em;margin:0 0 22px;color:var(--ivory);text-shadow:0 2px 24px rgba(13,37,29,.5)}
+.pb-t i{color:var(--gold-l)}
+.pb-l{display:inline-flex;gap:10px;align-items:center;font:600 14px/1 var(--fb);color:var(--ivory);border-bottom:1px solid var(--gold-l);padding-bottom:4px}
+.pb-l span{transition:transform .35s var(--ease-o)}
+@media (hover:hover){.pb-l:hover span{transform:translateX(4px)}}
+.pband .pb-k,.pband .pb-t,.pband .pb-l{opacity:0;transform:translateY(18px);transition:opacity .9s var(--ease-o),transform .9s var(--ease-o)}
+.pband.in .pb-k,.pband.in .pb-t,.pband.in .pb-l{opacity:1;transform:none}
+.pband.in .pb-t{transition-delay:.12s}.pband.in .pb-l{transition-delay:.24s}
+.tick{padding-bottom:30px}
+/* faint photo behind dark sections */
+.pbg{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.pbg img{position:absolute;left:0;top:-12%;width:100%;height:124%;object-fit:cover;opacity:.34;transform:translate3d(0,var(--py,0px),0);filter:saturate(.75)}
+.pbg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,37,29,.3),rgba(13,37,29,.72) 50%,rgba(13,37,29,.9))}
+.pbg.top img{opacity:.46;height:70%;top:-6%}.pbg.top::after{background:linear-gradient(180deg,rgba(13,37,29,.25),rgba(13,37,29,.7) 30%,var(--em-dd) 58%)}
+.dark>.pbg~.amb{z-index:0}
+@media (max-width:1000px){.pband{height:clamp(360px,62vh,560px)}.pband .pb-img{top:0;height:100%;transform:none}.pbg img{top:0;height:100%;transform:none}}
+@media (max-width:700px){.pband .pb-in{width:min(100% - 36px,1240px);padding-bottom:104px}.pb-t{font-size:29px}}
+@media (prefers-reduced-motion:reduce){.pband .pb-img,.pbg img{transform:none!important}.pband .pb-k,.pband .pb-t,.pband .pb-l{opacity:1!important;transform:none!important}}
+html:not(.js) .pband .pb-k,html:not(.js) .pband .pb-t,html:not(.js) .pband .pb-l{opacity:1;transform:none}
+</style>
 </head>
 <body>
 <a class="skip" href="#main" data-en="Skip to content">Skip to content</a>
@@ -645,8 +688,11 @@ html:not(.js) .wi,html:not(.js) .h-up,html:not(.js) .hp-img img,html:not(.js) .h
 </section>
 
 <div class="tick" aria-hidden="true"><div class="tick-in"><span data-en="Image">Image</span><i>◆</i><span data-en="Words">Words</span><i>◆</i><span data-en="Colour">Colour</span><i>◆</i><span data-en="Relationship">Relationship</span><i>◆</i><span data-en="Safety">Safety</span><i>◆</i><span data-en="Consistency">Consistency</span><i>◆</i><span data-en="Trust">Trust</span><i>◆</i><span data-en="Image">Image</span><i>◆</i><span data-en="Words">Words</span><i>◆</i><span data-en="Colour">Colour</span><i>◆</i><span data-en="Relationship">Relationship</span><i>◆</i><span data-en="Safety">Safety</span><i>◆</i><span data-en="Consistency">Consistency</span><i>◆</i><span data-en="Trust">Trust</span><i>◆</i></div></div>
+<section class="pband" aria-label="The studio" data-en-aria="The studio"><img class="pb-img" data-px="7" loading="lazy" decoding="async" src="assets/img/akrivi-kopanitsanou-atelie-polythrona-fotistiko-1800.webp" srcset="assets/img/akrivi-kopanitsanou-atelie-polythrona-fotistiko-600.webp 600w, assets/img/akrivi-kopanitsanou-atelie-polythrona-fotistiko.webp 1200w, assets/img/akrivi-kopanitsanou-atelie-polythrona-fotistiko-1800.webp 1800w" sizes="100vw" width="1800" height="1179" alt="Armchair and lamp against the green wall of the studio in Neo Psychiko" data-en-alt="Armchair and lamp against the green wall of the studio in Neo Psychiko"><div class="pb-in"><p class="pb-k" data-en="The studio · Neo Psychiko">The studio · Neo Psychiko</p><p class="pb-t" data-en="A quiet room with <i>colours</i>, paper and natural light.">A quiet room with <i>colours</i>, paper and natural light.</p><a class="pb-l" href="#atelie"><b data-en="See the space">See the space</b><span aria-hidden="true">→</span></a></div></section>
+
 
 <section class="sec dark appr" id="prosengisi">
+  <div class="pbg top" aria-hidden="true"><img data-px="8" loading="lazy" decoding="async" src="assets/img/akrivi-kopanitsanou-atelie-chromata-pinelia.webp" srcset="assets/img/akrivi-kopanitsanou-atelie-chromata-pinelia-600.webp 600w, assets/img/akrivi-kopanitsanou-atelie-chromata-pinelia.webp 1200w" sizes="100vw" alt=""></div>
   <div class="amb" aria-hidden="true"><span class="wash w4"></span><span class="wash w5"></span></div>
   <div class="wrap">
     <div class="sec-head">
@@ -722,20 +768,14 @@ html:not(.js) .wi,html:not(.js) .h-up,html:not(.js) .hp-img img,html:not(.js) .h
     </div>
     <div class="gal">
       <div class="g-row">
-        <button type="button" class="g lb-t" style="--r:1.5" data-full="assets/img/akrivi-kopanitsanou-grafeio-neo-psychiko-fos.webp"><img loading="lazy" decoding="async" src="assets/img/akrivi-kopanitsanou-grafeio-neo-psychiko-fos-600.webp" srcset="assets/img/akrivi-kopanitsanou-grafeio-neo-psychiko-fos-600.webp 600w, assets/img/akrivi-kopanitsanou-grafeio-neo-psychiko-fos.webp 1200w" sizes="(max-width:700px) 92vw, 36vw" width="1200" height="800" alt="The session room with natural light in Neo Psychiko" data-en-alt="The session room with natural light in Neo Psychiko"></button>
-        <button type="button" class="g lb-t" style="--r:.6667" data-full="assets/img/akrivi-kopanitsanou-atelie-kavaletto-parathyro.webp"><img loading="lazy" decoding="async" src="assets/img/akrivi-kopanitsanou-atelie-kavaletto-parathyro-600.webp" srcset="assets/img/akrivi-kopanitsanou-atelie-kavaletto-parathyro-600.webp 600w, assets/img/akrivi-kopanitsanou-atelie-kavaletto-parathyro.webp 800w" sizes="(max-width:700px) 60vw, 18vw" width="800" height="1200" alt="The easel by the studio window" data-en-alt="The easel by the studio window"></button>
         <button type="button" class="g lb-t ms" style="--r:1.5" data-full="assets/img/akrivi-kopanitsanou-atelie-eikastikis-psychotherapeias-neo-psychiko.webp"><span class="ms-in"><img loading="lazy" decoding="async" src="assets/img/akrivi-kopanitsanou-atelie-eikastikis-psychotherapeias-neo-psychiko-600.webp" srcset="assets/img/akrivi-kopanitsanou-atelie-eikastikis-psychotherapeias-neo-psychiko-600.webp 600w, assets/img/akrivi-kopanitsanou-atelie-eikastikis-psychotherapeias-neo-psychiko.webp 1200w" sizes="(max-width:700px) 92vw, 36vw" width="1200" height="800" alt="The art psychotherapy studio with two armchairs and the easel" data-en-alt="The art psychotherapy studio with two armchairs and the easel"></span></button>
-      </div>
-      <div class="g-row">
-        <button type="button" class="g lb-t" style="--r:1.5267" data-full="assets/img/akrivi-kopanitsanou-atelie-polythrona-fotistiko.webp"><img loading="lazy" decoding="async" src="assets/img/akrivi-kopanitsanou-atelie-polythrona-fotistiko-600.webp" srcset="assets/img/akrivi-kopanitsanou-atelie-polythrona-fotistiko-600.webp 600w, assets/img/akrivi-kopanitsanou-atelie-polythrona-fotistiko.webp 1200w" sizes="(max-width:700px) 92vw, 36vw" width="1200" height="786" alt="Armchair and lamp against the green studio wall" data-en-alt="Armchair and lamp against the green studio wall"></button>
+        <button type="button" class="g lb-t" style="--r:.6667" data-full="assets/img/akrivi-kopanitsanou-atelie-kavaletto-parathyro.webp"><img loading="lazy" decoding="async" src="assets/img/akrivi-kopanitsanou-atelie-kavaletto-parathyro-600.webp" srcset="assets/img/akrivi-kopanitsanou-atelie-kavaletto-parathyro-600.webp 600w, assets/img/akrivi-kopanitsanou-atelie-kavaletto-parathyro.webp 800w" sizes="(max-width:700px) 60vw, 18vw" width="800" height="1200" alt="The easel by the studio window" data-en-alt="The easel by the studio window"></button>
         <button type="button" class="g lb-t" style="--r:.66" data-full="assets/img/akrivi-kopanitsanou-atelie-grafeio.webp"><img loading="lazy" decoding="async" src="assets/img/akrivi-kopanitsanou-atelie-grafeio-600.webp" srcset="assets/img/akrivi-kopanitsanou-atelie-grafeio-600.webp 600w, assets/img/akrivi-kopanitsanou-atelie-grafeio.webp 792w" sizes="(max-width:700px) 60vw, 18vw" width="792" height="1200" alt="The work desk inside the studio" data-en-alt="The work desk inside the studio"></button>
-        <button type="button" class="g lb-t" style="--r:1.6194" data-full="assets/img/akrivi-kopanitsanou-atelie-pinakes-kyma-galini.webp"><img loading="lazy" decoding="async" src="assets/img/akrivi-kopanitsanou-atelie-pinakes-kyma-galini-600.webp" srcset="assets/img/akrivi-kopanitsanou-atelie-pinakes-kyma-galini-600.webp 600w, assets/img/akrivi-kopanitsanou-atelie-pinakes-kyma-galini.webp 1200w" sizes="(max-width:700px) 92vw, 36vw" width="1200" height="741" alt="The two paintings in the studio: the wave and the calm" data-en-alt="The two paintings in the studio: the wave and the calm"></button>
       </div>
       <div class="g-row">
-        <button type="button" class="g lb-t" style="--r:1.5625" data-full="assets/img/akrivi-kopanitsanou-atelie-xylines-figoures.webp"><img loading="lazy" decoding="async" src="assets/img/akrivi-kopanitsanou-atelie-xylines-figoures-600.webp" width="1200" height="768" sizes="(max-width:700px) 46vw, 24vw" srcset="assets/img/akrivi-kopanitsanou-atelie-xylines-figoures-600.webp 600w, assets/img/akrivi-kopanitsanou-atelie-xylines-figoures.webp 1200w" alt="Wooden figures and a lamp on the studio shelf" data-en-alt="Wooden figures and a lamp on the studio shelf"></button>
-        <button type="button" class="g lb-t" style="--r:1.5" data-full="assets/img/akrivi-kopanitsanou-atelie-chromata-pinelia.webp"><img loading="lazy" decoding="async" src="assets/img/akrivi-kopanitsanou-atelie-chromata-pinelia-600.webp" width="1200" height="800" sizes="(max-width:700px) 46vw, 24vw" srcset="assets/img/akrivi-kopanitsanou-atelie-chromata-pinelia-600.webp 600w, assets/img/akrivi-kopanitsanou-atelie-chromata-pinelia.webp 1200w" alt="Paints, brushes and pencils for art psychotherapy" data-en-alt="Paints, brushes and pencils for art psychotherapy"></button>
-        <button type="button" class="g lb-t" style="--r:1.5" data-full="assets/img/akrivi-kopanitsanou-atelie-vivlia.webp"><img loading="lazy" decoding="async" src="assets/img/akrivi-kopanitsanou-atelie-vivlia-600.webp" width="1200" height="800" sizes="(max-width:700px) 46vw, 24vw" srcset="assets/img/akrivi-kopanitsanou-atelie-vivlia-600.webp 600w, assets/img/akrivi-kopanitsanou-atelie-vivlia.webp 1200w" alt="Books on the studio shelf" data-en-alt="Books on the studio shelf"></button>
-        <button type="button" class="g lb-t" style="--r:1.6349" data-full="assets/img/akrivi-kopanitsanou-atelie-niki-samothrakis.webp"><img loading="lazy" decoding="async" src="assets/img/akrivi-kopanitsanou-atelie-niki-samothrakis-600.webp" width="1200" height="734" sizes="(max-width:700px) 46vw, 24vw" srcset="assets/img/akrivi-kopanitsanou-atelie-niki-samothrakis-600.webp 600w, assets/img/akrivi-kopanitsanou-atelie-niki-samothrakis.webp 1200w" alt="A small sculpture of the Winged Victory of Samothrace at the practice" data-en-alt="A small sculpture of the Winged Victory of Samothrace at the practice"></button>
+        <button type="button" class="g lb-t" style="--r:1.5625" data-full="assets/img/akrivi-kopanitsanou-atelie-xylines-figoures.webp"><img loading="lazy" decoding="async" src="assets/img/akrivi-kopanitsanou-atelie-xylines-figoures-600.webp" width="1200" height="768" sizes="(max-width:700px) 46vw, 32vw" srcset="assets/img/akrivi-kopanitsanou-atelie-xylines-figoures-600.webp 600w, assets/img/akrivi-kopanitsanou-atelie-xylines-figoures.webp 1200w" alt="Wooden figures and a lamp on the studio shelf" data-en-alt="Wooden figures and a lamp on the studio shelf"></button>
+        <button type="button" class="g lb-t" style="--r:1.5" data-full="assets/img/akrivi-kopanitsanou-atelie-vivlia.webp"><img loading="lazy" decoding="async" src="assets/img/akrivi-kopanitsanou-atelie-vivlia-600.webp" width="1200" height="800" sizes="(max-width:700px) 46vw, 32vw" srcset="assets/img/akrivi-kopanitsanou-atelie-vivlia-600.webp 600w, assets/img/akrivi-kopanitsanou-atelie-vivlia.webp 1200w" alt="Books on the studio shelf" data-en-alt="Books on the studio shelf"></button>
+        <button type="button" class="g lb-t" style="--r:1.6349" data-full="assets/img/akrivi-kopanitsanou-atelie-niki-samothrakis.webp"><img loading="lazy" decoding="async" src="assets/img/akrivi-kopanitsanou-atelie-niki-samothrakis-600.webp" width="1200" height="734" sizes="(max-width:700px) 46vw, 32vw" srcset="assets/img/akrivi-kopanitsanou-atelie-niki-samothrakis-600.webp 600w, assets/img/akrivi-kopanitsanou-atelie-niki-samothrakis.webp 1200w" alt="A small sculpture of the Winged Victory of Samothrace at the practice" data-en-alt="A small sculpture of the Winged Victory of Samothrace at the practice"></button>
       </div>
     </div>
   </div>
@@ -767,6 +807,7 @@ html:not(.js) .wi,html:not(.js) .h-up,html:not(.js) .hp-img img,html:not(.js) .h
 </section>
 
 <section class="sec dark rev" id="kritikes">
+  <div class="pbg" aria-hidden="true"><img data-px="8" loading="lazy" decoding="async" src="assets/img/akrivi-kopanitsanou-atelie-pinakes-kyma-galini.webp" srcset="assets/img/akrivi-kopanitsanou-atelie-pinakes-kyma-galini-600.webp 600w, assets/img/akrivi-kopanitsanou-atelie-pinakes-kyma-galini.webp 1200w" sizes="100vw" alt=""></div>
   <div class="wrap">
     <div class="rev-top">
       <div class="sec-head">
@@ -829,6 +870,7 @@ html:not(.js) .wi,html:not(.js) .h-up,html:not(.js) .hp-img img,html:not(.js) .h
 </section>
 
 <section class="sec dark contact" id="epikoinonia">
+  <div class="pbg" aria-hidden="true"><img data-px="8" loading="lazy" decoding="async" src="assets/img/akrivi-kopanitsanou-grafeio-neo-psychiko-fos.webp" srcset="assets/img/akrivi-kopanitsanou-grafeio-neo-psychiko-fos-600.webp 600w, assets/img/akrivi-kopanitsanou-grafeio-neo-psychiko-fos.webp 1200w" sizes="100vw" alt=""></div>
   <div class="amb" aria-hidden="true"><span class="wash w6"></span></div>
   <div class="wrap ct-in">
     <div class="ct-l">
@@ -1012,6 +1054,18 @@ html:not(.js) .wi,html:not(.js) .h-up,html:not(.js) .hp-img img,html:not(.js) .h
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
 })();
+</script>
+<script id="r1-js">
+(function(){var W=window,D=document,RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
+var bands=[].slice.call(D.querySelectorAll('.pband'));
+if('IntersectionObserver' in W&&!RM){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -12% 0px'});bands.forEach(function(b){io.observe(b)})}else bands.forEach(function(b){b.classList.add('in')});
+if(RM||!matchMedia('(hover:hover) and (pointer:fine) and (min-width:1001px)').matches)return;
+var els=[].slice.call(D.querySelectorAll('[data-px]')),vis=new Set(),tk=false;
+var vo=new IntersectionObserver(function(es){es.forEach(function(e){e.isIntersecting?vis.add(e.target):vis.delete(e.target)});run()},{rootMargin:'200px 0px'});
+els.forEach(function(el){vo.observe(el.parentNode)});
+function upd(){tk=false;var vh=W.innerHeight;els.forEach(function(el){var p=el.parentNode;if(!vis.has(p))return;var r=p.getBoundingClientRect(),c=(r.top+r.height/2-vh/2)/(vh/2+r.height/2);el.style.setProperty('--py',(c*-(+el.dataset.px||9))+'%')})}
+function run(){if(!tk){tk=true;requestAnimationFrame(upd)}}
+W.addEventListener('scroll',run,{passive:true});W.addEventListener('resize',run);run()})();
 </script>
 <script id="advon-en-nav">/* flags = links between / and /en (Google ranks both) */document.addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("button[data-l],button[data-lang],a[data-l],a[data-lang],[data-set-lang]");if(!b)return;var l=b.getAttribute("data-l")||b.getAttribute("data-lang")||b.getAttribute("data-set-lang");if(l==="en"||(l!=="el"&&l!=="en"))return;e.preventDefault();e.stopImmediatePropagation();location.href=(l==="en"?"en":"./")+location.hash},true)</script>
 </body>
